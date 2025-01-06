@@ -1,5 +1,27 @@
 # eslint-plugin-vue-i18n-ex
 
+## 5.0.0
+
+### Major Changes
+
+- [#1](https://github.com/its-lee/eslint-plugin-vue-i18n-ex/pull/1) [`f608a79`](https://github.com/its-lee/eslint-plugin-vue-i18n-ex/commit/f608a7904db680ab33209d3797ff121c93f3d547) Thanks [@its-lee](https://github.com/its-lee)! - fix(deps): update dependency core-base to v10
+
+- [`d42a050`](https://github.com/its-lee/eslint-plugin-vue-i18n-ex/commit/d42a050e3bf5b7e5e62e266abbee1adad88bfbec) Thanks [@FeedItBack-Lee](https://github.com/FeedItBack-Lee)! - eslint 9 support
+
+- [#1](https://github.com/its-lee/eslint-plugin-vue-i18n-ex/pull/1) [`f608a79`](https://github.com/its-lee/eslint-plugin-vue-i18n-ex/commit/f608a7904db680ab33209d3797ff121c93f3d547) Thanks [@its-lee](https://github.com/its-lee)! - fix(deps): update dependency @intlify/message-compiler to v11
+
+- [#1](https://github.com/its-lee/eslint-plugin-vue-i18n-ex/pull/1) [`f608a79`](https://github.com/its-lee/eslint-plugin-vue-i18n-ex/commit/f608a7904db680ab33209d3797ff121c93f3d547) Thanks [@its-lee](https://github.com/its-lee)! - docs!: Add Versioning Policy
+
+- [#1](https://github.com/its-lee/eslint-plugin-vue-i18n-ex/pull/1) [`f608a79`](https://github.com/its-lee/eslint-plugin-vue-i18n-ex/commit/f608a7904db680ab33209d3797ff121c93f3d547) Thanks [@its-lee](https://github.com/its-lee)! - fix(deps): update dependency @intlify/message-compiler to v10
+
+- [#1](https://github.com/its-lee/eslint-plugin-vue-i18n-ex/pull/1) [`f608a79`](https://github.com/its-lee/eslint-plugin-vue-i18n-ex/commit/f608a7904db680ab33209d3797ff121c93f3d547) Thanks [@its-lee](https://github.com/its-lee)! - feat!: update config
+
+- [#1](https://github.com/its-lee/eslint-plugin-vue-i18n-ex/pull/1) [`f608a79`](https://github.com/its-lee/eslint-plugin-vue-i18n-ex/commit/f608a7904db680ab33209d3797ff121c93f3d547) Thanks [@its-lee](https://github.com/its-lee)! - feat!: rename configs
+
+### Patch Changes
+
+- [#1](https://github.com/its-lee/eslint-plugin-vue-i18n-ex/pull/1) [`8a5c75a`](https://github.com/its-lee/eslint-plugin-vue-i18n-ex/commit/8a5c75a95745c002ea17b33cff56ac253fae41bc) Thanks [@its-lee](https://github.com/its-lee)! - Sync from fork origin to support eslint 9
+
 ## 4.0.0-next.1
 
 ### Major Changes
