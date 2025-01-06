@@ -1,5 +1,5 @@
 /**
- * A simplified version of the message parser that handles messages like vue-i18n v8.
+ * A simplified version of the message parser that handles messages like vue-i18n-ex v8.
  * This parser probably has poor performance.
  */
 import type {
@@ -15,8 +15,9 @@ import type {
   LinkedModifierNode,
   LinkedKeyNode
 } from '@intlify/message-compiler'
-import lodash from 'lodash'
+import { sortedLastIndex } from 'lodash'
 import { NodeTypes } from './utils'
+import type { ModuloNamedNode } from './parser-v9'
 
 export function parse(code: string): {
   ast: ResourceNode
@@ -69,7 +70,7 @@ class CodeContext {
         column: this.lines[this.lines.length - 1].length + 1
       }
     }
-    const lineNumber = lodash.sortedLastIndex(this.lineStartIndices, index)
+    const lineNumber = sortedLastIndex(this.lineStartIndices, index)
     return {
       line: lineNumber,
       column: index - this.lineStartIndices[lineNumber - 1] + 1
@@ -90,7 +91,7 @@ class CodeContext {
   }
   setEndLoc(
     node: {
-      end: number
+      end?: number
       loc?: SourceLocation
     },
     end: number
@@ -207,10 +208,13 @@ function parseAST(code: string, errors: CompileError[]): ResourceNode {
           node = listNode
         }
         if (!node) {
-          const namedNode: NamedNode = {
+          const namedNode: ModuloNamedNode = {
             type: NodeTypes.Named,
             key: trimmedKeyValue,
             ...ctx.getNodeLoc(endOffset - 1, placeholderEndOffset)
+          }
+          if (key === '%{') {
+            namedNode.modulo = true
           }
           if (!/^[a-zA-Z][a-zA-Z0-9_$]*$/.test(namedNode.key)) {
             errors.push(
@@ -298,7 +302,7 @@ function parseLiked(ctx: CodeContext, errors: CompileError[]) {
     ctx.setOffset(ctx.offset + 1)
     paren = true
   }
-  // see https://github.com/kazupon/vue-i18n/blob/96a676cca51b592f3f8718b149ef26b3c8e70a64/src/index.js#L28
+  // see https://github.com/kazupon/vue-i18n-ex/blob/96a676cca51b592f3f8718b149ef26b3c8e70a64/src/index.js#L28
   const keyValue = /^[\w\-_|.]*/u.exec(ctx.buff)![0]
   const keyEndOffset = ctx.offset + keyValue.length
   const key: LinkedKeyNode = {

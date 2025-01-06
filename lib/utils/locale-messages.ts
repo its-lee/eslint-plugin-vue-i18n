@@ -10,14 +10,14 @@ import type {
   LocaleKeyType
 } from '../types'
 import { extname } from 'path'
-import fs from 'fs'
+import { readFileSync } from 'fs'
 import {
   parseYamlValuesInI18nBlock,
   parseJsonValuesInI18nBlock
 } from './parsers'
 import { ResourceLoader } from './resource-loader'
-import JSON5 from 'json5'
-import yaml from 'js-yaml'
+import { parse } from 'json5'
+import { load } from 'js-yaml'
 import { joinPath, parsePath } from './key-path'
 import { getBasename } from './path-utils'
 
@@ -234,9 +234,9 @@ export class FileLocaleMessage extends LocaleMessage {
         delete require.cache[key]
         return require(fileName)
       } else if (ext === '.yaml' || ext === '.yml') {
-        return yaml.load(fs.readFileSync(fileName, 'utf8'))
+        return load(readFileSync(fileName, 'utf8'))
       } else if (ext === '.json' || ext === '.json5') {
-        return JSON5.parse(fs.readFileSync(fileName, 'utf8'))
+        return parse(readFileSync(fileName, 'utf8'))
       }
     })
   }

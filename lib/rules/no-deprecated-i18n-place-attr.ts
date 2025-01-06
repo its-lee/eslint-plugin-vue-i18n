@@ -40,8 +40,8 @@ export = createRule({
       description:
         'disallow using deprecated `place` attribute (Removed in Vue I18n 9.0.0+)',
       category: 'Recommended',
-      url: 'https://eslint-plugin-vue-i18n.intlify.dev/rules/no-deprecated-i18n-place-attr.html',
-      recommended: false
+      url: 'https://eslint-plugin-vue-i18n-ex.intlify.dev/rules/no-deprecated-i18n-place-attr.html',
+      recommended: true
     },
     fixable: null,
     schema: [],

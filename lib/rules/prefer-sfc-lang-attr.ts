@@ -1,9 +1,11 @@
 import { getAttribute, isI18nBlock } from '../utils/index'
 import type { RuleContext, RuleListener } from '../types'
 import { createRule } from '../utils/rule'
+import { getSourceCode } from '../utils/compat'
 
 function create(context: RuleContext): RuleListener {
-  const df = context.parserServices.getDocumentFragment?.()
+  const sourceCode = getSourceCode(context)
+  const df = sourceCode.parserServices.getDocumentFragment?.()
   if (!df) {
     return {}
   }
@@ -29,13 +31,14 @@ function create(context: RuleContext): RuleListener {
                 return fixer.replaceTextRange(langAttrs.range, 'lang="json"')
               }
               const tokenStore =
-                context.parserServices.getTemplateBodyTokenStore()
+                sourceCode.parserServices.getTemplateBodyTokenStore()
               const closeToken = tokenStore.getLastToken(i18n.startTag)
               const beforeToken = tokenStore.getTokenBefore(closeToken)
               return fixer.insertTextBeforeRange(
                 closeToken.range,
-                (beforeToken.range[1] < closeToken.range[0] ? '' : ' ') +
-                  'lang="json" '
+                `${
+                  beforeToken.range[1] < closeToken.range[0] ? '' : ' '
+                }lang="json" `
               )
             }
           })
@@ -51,7 +54,7 @@ export = createRule({
     docs: {
       description: 'require lang attribute on `<i18n>` block',
       category: 'Best Practices',
-      url: 'https://eslint-plugin-vue-i18n.intlify.dev/rules/prefer-sfc-lang-attr.html',
+      url: 'https://eslint-plugin-vue-i18n-ex.intlify.dev/rules/prefer-sfc-lang-attr.html',
       recommended: false
     },
     fixable: 'code',

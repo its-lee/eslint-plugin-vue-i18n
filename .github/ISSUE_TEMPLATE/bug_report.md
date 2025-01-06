@@ -6,14 +6,14 @@ about: Create a report to help us improve
 <!--
   Before posting the issue, please confirm that the problem you're getting
   is not related with your code editor configuration.
-  To make sure it's not, run: yarn eslint src/your-file.vue
+  To make sure it's not, run: pnpm eslint src/your-file.vue
 -->
 
 **Tell us about your environment**
 
 - **ESLint version:**
 - **eslint-plugin-vue version:**
-- **eslint-plugin-vue-i18n version:**
+- **eslint-plugin-vue-i18n-ex version:**
 - **Node version:**
 
 **Please show your full configuration:**
@@ -46,5 +46,3 @@ about: Create a report to help us improve
   Please share a repository that can reproduce your issue.
   If you don't share it, we will most likely add a comment asking you to share the repository.
 -->
-
-

@@ -16,7 +16,10 @@ import type {
 import { joinPath } from '../utils/key-path'
 import { getCwd } from '../utils/get-cwd'
 import { createRule } from '../utils/rule'
-const debug = debugBuilder('eslint-plugin-vue-i18n:no-duplicate-keys-in-locale')
+import { getFilename, getSourceCode } from '../utils/compat'
+const debug = debugBuilder(
+  'eslint-plugin-vue-i18n-ex:no-duplicate-keys-in-locale'
+)
 
 interface DictData {
   dict: I18nLocaleMessageDictionary
@@ -34,13 +37,14 @@ interface PathStack {
 function getMessageFilepath(fullPath: string, context: RuleContext) {
   const cwd = getCwd(context)
   if (fullPath.startsWith(cwd)) {
-    return fullPath.replace(cwd + '/', './')
+    return fullPath.replace(`${cwd}/`, './')
   }
   return fullPath
 }
 
 function create(context: RuleContext): RuleListener {
-  const filename = context.getFilename()
+  const filename = getFilename(context)
+  const sourceCode = getSourceCode(context)
   const options = (context.options && context.options[0]) || {}
   const ignoreI18nBlock = Boolean(options.ignoreI18nBlock)
 
@@ -129,7 +133,7 @@ function create(context: RuleContext): RuleListener {
           }
           if (typeof value.value !== 'object') {
             reportFiles.push(
-              '"' + getMessageFilepath(value.source.fullpath, context) + '"'
+              `"${getMessageFilepath(value.source.fullpath, context)}"`
             )
           } else {
             nextOtherDictionaries.push({
@@ -145,7 +149,7 @@ function create(context: RuleContext): RuleListener {
             message: `duplicate key '${keyPathStr}' in '${pathStack.locale}'. ${
               reportFiles.length === 0
                 ? last
-                : reportFiles.join(', ') + ', and ' + last
+                : `${reportFiles.join(', ')}, and ${last}`
             } has the same key`,
             loc: reportNode.loc
           })
@@ -316,7 +320,7 @@ function create(context: RuleContext): RuleListener {
               lm => lm !== targetLocaleMessage
             )
         return createVisitorForJson(
-          ctx.getSourceCode(),
+          getSourceCode(ctx),
           targetLocaleMessage,
           otherLocaleMessages
         )
@@ -335,13 +339,16 @@ function create(context: RuleContext): RuleListener {
               lm => lm !== targetLocaleMessage
             )
         return createVisitorForYaml(
-          ctx.getSourceCode(),
+          getSourceCode(ctx),
           targetLocaleMessage,
           otherLocaleMessages
         )
       }
     )
-  } else if (context.parserServices.isJSON || context.parserServices.isYAML) {
+  } else if (
+    sourceCode.parserServices.isJSON ||
+    sourceCode.parserServices.isYAML
+  ) {
     const localeMessages = getLocaleMessages(context)
     const targetLocaleMessage = localeMessages.findExistLocaleMessage(filename)
     if (!targetLocaleMessage) {
@@ -349,17 +356,16 @@ function create(context: RuleContext): RuleListener {
       return {}
     }
 
-    const sourceCode = context.getSourceCode()
     const otherLocaleMessages: LocaleMessage[] =
       localeMessages.localeMessages.filter(lm => lm !== targetLocaleMessage)
 
-    if (context.parserServices.isJSON) {
+    if (sourceCode.parserServices.isJSON) {
       return createVisitorForJson(
         sourceCode,
         targetLocaleMessage,
         otherLocaleMessages
       )
-    } else if (context.parserServices.isYAML) {
+    } else if (sourceCode.parserServices.isYAML) {
       return createVisitorForYaml(
         sourceCode,
         targetLocaleMessage,
@@ -380,7 +386,7 @@ export = createRule({
       description:
         'disallow duplicate localization keys within the same locale',
       category: 'Best Practices',
-      url: 'https://eslint-plugin-vue-i18n.intlify.dev/rules/no-duplicate-keys-in-locale.html',
+      url: 'https://eslint-plugin-vue-i18n-ex.intlify.dev/rules/no-duplicate-keys-in-locale.html',
       recommended: false
     },
     fixable: null,

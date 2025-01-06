@@ -1,4 +1,5 @@
 import type { RuleContext, RuleListener } from '../types'
+import { getSourceCode } from '../utils/compat'
 import { isI18nBlock, getAttribute } from '../utils/index'
 import { createRule } from '../utils/rule'
 
@@ -8,7 +9,7 @@ export = createRule({
     docs: {
       description: 'require or disallow the locale attribute on `<i18n>` block',
       category: 'Stylistic Issues',
-      url: 'https://eslint-plugin-vue-i18n.intlify.dev/rules/sfc-locale-attr.html',
+      url: 'https://eslint-plugin-vue-i18n-ex.intlify.dev/rules/sfc-locale-attr.html',
       recommended: false
     },
     fixable: null,
@@ -23,7 +24,8 @@ export = createRule({
     }
   },
   create(context: RuleContext): RuleListener {
-    const df = context.parserServices.getDocumentFragment?.()
+    const sourceCode = getSourceCode(context)
+    const df = sourceCode.parserServices.getDocumentFragment?.()
     if (!df) {
       return {}
     }

@@ -1,4 +1,4 @@
-# eslint-plugin-vue-i18n Contributing Guide
+# eslint-plugin-vue-i18n-ex Contributing Guide
 
 - [Issue Reporting Guidelines](#issue-reporting-guidelines)
 - [Pull Request Guidelines](#pull-request-guidelines)
@@ -8,7 +8,7 @@
 
 - The issue list of this repo is **exclusively** for bug reports and feature requests. Non-conforming issues will be closed immediately.
 
-  - For simple beginner questions, you can get quick answers from [`#vue-i18n` channel of Discord](https://chat.vuejs.org/)
+  - For simple beginner questions, you can get quick answers from [`#vue-i18n-ex` channel of Discord](https://chat.vuejs.org/)
 
   - For more complicated questions, you can use [the official forum](http://forum.vuejs.org/) or StackOverflow. Make sure to provide enough information when asking your questions - this makes it easier for others to help you!
 
@@ -30,7 +30,7 @@
 
 - It's OK to have multiple small commits as you work on the PR - we will let GitHub automatically squash it before merging.
 
-- Make sure `yarn test` passes. (see [development setup](#development-setup))
+- Make sure `pnpm test` passes. (see [development setup](#development-setup))
 
 - If adding new feature:
 
@@ -43,7 +43,7 @@
 
 ### Work Step Example
 
-- Fork the repository from [@intlify/eslint-plugin-vue-i18n](https://github.com/intlify/eslint-plugin-vue-i18n) !
+- Fork the repository from [@intlify/eslint-plugin-vue-i18n](https://github.com/intlify/eslint-plugin-vue-i18n-ex) !
 - Create your topic branch from `master`: `git branch my-new-topic origin/master`
 - Add codes and pass tests !
 - Commit your changes: `git commit -am 'Add some topic'`
@@ -52,23 +52,23 @@
 
 ## Development Setup
 
-You will need [Node.js](http://nodejs.org) and [Yarn](https://yarnpkg.com/en/)
+You will need [Node.js](http://nodejs.org) and [pnpm](https://pnpm.io/)
 
 After cloning the repo, run:
 
-    $ yarn
+    $ pnpm install
 
-### Commonly used scirpt with Yarn
+### Commonly used scirpt with `pnpm`
 
     # lint source codes and docs
-    $ yarn lint
-    $ yarn lint:docs
+    $ pnpm lint
+    $ pnpm lint:docs
 
-    # run the vuepress
-    $ yarn docs
+    # run vitepress
+    $ pnpm docs
 
     # run the test suite
-    $ yarn test
+    $ pnpm test
 
 There are some other scripts available in the `scripts` section of the `package.json` file.
 

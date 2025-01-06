@@ -1,10 +1,10 @@
 ---
-title: '@intlify/vue-i18n/prefer-sfc-lang-attr'
+title: 'vue-i18n-ex/prefer-sfc-lang-attr'
 description: require lang attribute on `<i18n>` block
 since: v1.2.0
 ---
 
-# @intlify/vue-i18n/prefer-sfc-lang-attr
+# vue-i18n-ex/prefer-sfc-lang-attr
 
 > require lang attribute on `<i18n>` block
 
@@ -31,7 +31,7 @@ locale messages:
 }
 </i18n>
 <script>
-/* eslint @intlify/vue-i18n/prefer-sfc-lang-attr: 'error' */
+/* eslint vue-i18n-ex/prefer-sfc-lang-attr: 'error' */
 </script>
 ```
 
@@ -54,7 +54,7 @@ locale messages:
 }
 </i18n>
 <script>
-/* eslint @intlify/vue-i18n/prefer-sfc-lang-attr: 'error' */
+/* eslint vue-i18n-ex/prefer-sfc-lang-attr: 'error' */
 </script>
 ```
 
@@ -62,9 +62,9 @@ locale messages:
 
 ## :rocket: Version
 
-This rule was introduced in `@intlify/eslint-plugin-vue-i18n` v1.2.0
+This rule was introduced in `eslint-plugin-vue-i18n-ex` v1.2.0
 
 ## :mag: Implementation
 
-- [Rule source](https://github.com/intlify/eslint-plugin-vue-i18n/blob/master/lib/rules/prefer-sfc-lang-attr.ts)
-- [Test source](https://github.com/intlify/eslint-plugin-vue-i18n/tree/master/tests/lib/rules/prefer-sfc-lang-attr.ts)
+- [Rule source](https://github.com/intlify/eslint-plugin-vue-i18n-ex/blob/master/lib/rules/prefer-sfc-lang-attr.ts)
+- [Test source](https://github.com/intlify/eslint-plugin-vue-i18n-ex/tree/master/tests/lib/rules/prefer-sfc-lang-attr.ts)

@@ -15,13 +15,15 @@ import type { LocaleMessage, LocaleMessages } from '../utils/locale-messages'
 import { joinPath } from '../utils/key-path'
 import { createRule } from '../utils/rule'
 import { getBasename } from '../utils/path-utils'
+import { getFilename, getSourceCode } from '../utils/compat'
 const debug = debugBuilder(
-  'eslint-plugin-vue-i18n:no-missing-keys-in-other-locales'
+  'eslint-plugin-vue-i18n-ex:no-missing-keys-in-other-locales'
 )
 
 function create(context: RuleContext): RuleListener {
-  const filename = context.getFilename()
+  const filename = getFilename(context)
   const basename = getBasename(filename)
+  const sourceCode = getSourceCode(context)
   const ignoreLocales: string[] = context.options[0]?.ignoreLocales || []
 
   function reportMissing(
@@ -318,7 +320,10 @@ function create(context: RuleContext): RuleListener {
         return createVisitorForYaml(targetLocaleMessage, localeMessages)
       }
     )
-  } else if (context.parserServices.isJSON || context.parserServices.isYAML) {
+  } else if (
+    sourceCode.parserServices.isJSON ||
+    sourceCode.parserServices.isYAML
+  ) {
     const localeMessages = getLocaleMessages(context)
     const targetLocaleMessage = localeMessages.findExistLocaleMessage(filename)
     if (!targetLocaleMessage) {
@@ -326,9 +331,9 @@ function create(context: RuleContext): RuleListener {
       return {}
     }
 
-    if (context.parserServices.isJSON) {
+    if (sourceCode.parserServices.isJSON) {
       return createVisitorForJson(targetLocaleMessage, localeMessages)
-    } else if (context.parserServices.isYAML) {
+    } else if (sourceCode.parserServices.isYAML) {
       return createVisitorForYaml(targetLocaleMessage, localeMessages)
     }
     return {}
@@ -344,7 +349,7 @@ export = createRule({
     docs: {
       description: 'disallow missing locale message keys in other locales',
       category: 'Best Practices',
-      url: 'https://eslint-plugin-vue-i18n.intlify.dev/rules/no-missing-keys-in-other-locales.html',
+      url: 'https://eslint-plugin-vue-i18n-ex.intlify.dev/rules/no-missing-keys-in-other-locales.html',
       recommended: false
     },
     fixable: null,

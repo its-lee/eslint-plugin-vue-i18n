@@ -1,14 +1,14 @@
 ---
-title: '@intlify/vue-i18n/no-html-messages'
+title: 'vue-i18n-ex/no-html-messages'
 description: disallow use HTML localization messages
 since: v0.1.0
 ---
 
-# @intlify/vue-i18n/no-html-messages
+# vue-i18n-ex/no-html-messages
 
 > disallow use HTML localization messages
 
-- :star: The `"extends": "plugin:@intlify/vue-i18n/recommended"` property in a configuration file enables this rule.
+- :star: The `"extends": "plugin:vue-i18n-ex/recommended"` or `*.configs["flat/recommended"]` property in a configuration file enables this rule.
 
 This rule reports in order to reduce the risk of injecting potentially unsafe localization message into the browser leading to supply-chain attack or XSS attack.
 
@@ -23,13 +23,13 @@ locale messages:
 <eslint-code-block language="json">
 
 ```json
-/* eslint @intlify/vue-i18n/no-html-messages: 'error' */
+/* eslint vue-i18n-ex/no-html-messages: 'error' */
 
 // ✗ BAD
 {
   "hello": "Hello! DIO!",
   "hi": "Hi! <span>DIO!</span>",
-  "contenst": {
+  "contents": {
     "banner": "banner: <iframe src=\"https://banner.domain.com\" frameBorder=\"0\" style=\"z-index:100001;position:fixed;bottom:0;right:0\"/>",
     "modal": "modal: <span onmouseover=\"alert(document.cookie);\">modal content</span>"
   }
@@ -54,12 +54,14 @@ In localization codes of application:
 
 ```js
 import Vue from 'vue'
-import VueI18n from 'vue-i18n'
+import VueI18n from 'vue-i18n-ex'
+
+import en from './locales/en.json'
 
 const i18n = new VueI18n({
   locale: 'en',
   messages: {
-    en: require('./locales/en.json')
+    en
   }
 })
 
@@ -76,7 +78,7 @@ locale messages:
 <eslint-code-block language="json">
 
 ```json
-/* eslint @intlify/vue-i18n/no-html-messages: 'error' */
+/* eslint vue-i18n-ex/no-html-messages: 'error' */
 
 // ✓ GOOD
 {
@@ -109,7 +111,9 @@ In localization codes of application:
 
 ```js
 import Vue from 'vue'
-import VueI18n from 'vue-i18n'
+import VueI18n from 'vue-i18n-ex'
+
+import en from './locales/en.json'
 
 // import some components used in i18n component
 import Banner from './path/to/components/Banner.vue'
@@ -122,7 +126,7 @@ Vue.component('Modal', Modal)
 const i18n = new VueI18n({
   locale: 'en',
   messages: {
-    en: require('./locales/en.json')
+    en
   }
 })
 
@@ -144,7 +148,7 @@ If you are certain the localization message is trusted, you can disable this rul
 
 ## :couple: Related Rules
 
-- [@intlify/vue-i18n/valid-message-syntax](./valid-message-syntax.md)
+- [vue-i18n-ex/valid-message-syntax](./valid-message-syntax.md)
 
 ## :books: Further reading
 
@@ -153,9 +157,9 @@ If you are certain the localization message is trusted, you can disable this rul
 
 ## :rocket: Version
 
-This rule was introduced in `@intlify/eslint-plugin-vue-i18n` v0.1.0
+This rule was introduced in `eslint-plugin-vue-i18n-ex` v0.1.0
 
 ## :mag: Implementation
 
-- [Rule source](https://github.com/intlify/eslint-plugin-vue-i18n/blob/master/lib/rules/no-html-messages.ts)
-- [Test source](https://github.com/intlify/eslint-plugin-vue-i18n/tree/master/tests/lib/rules/no-html-messages.ts)
+- [Rule source](https://github.com/intlify/eslint-plugin-vue-i18n-ex/blob/master/lib/rules/no-html-messages.ts)
+- [Test source](https://github.com/intlify/eslint-plugin-vue-i18n-ex/tree/master/tests/lib/rules/no-html-messages.ts)
