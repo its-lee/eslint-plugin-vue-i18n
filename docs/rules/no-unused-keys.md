@@ -1,10 +1,10 @@
 ---
-title: 'vue-i18n-ex/no-unused-keys'
+title: '@intlify/vue-i18n/no-unused-keys'
 description: disallow unused localization keys
 since: v0.1.0
 ---
 
-# vue-i18n-ex/no-unused-keys
+# @intlify/vue-i18n/no-unused-keys
 
 > disallow unused localization keys
 
@@ -25,7 +25,7 @@ locale messages:
 <eslint-code-block fix language="json" filename="en.json">
 
 ```json
-/* eslint vue-i18n-ex/no-unused-keys: 'error' */
+/* eslint @intlify/vue-i18n/no-unused-keys: 'error' */
 
 // ✗ BAD
 {
@@ -53,7 +53,7 @@ In localization codes of application:
 <eslint-code-block fix language="javascript">
 
 ```js
-import VueI18n from 'vue-i18n-ex'
+import VueI18n from 'vue-i18n'
 
 import en from './locales/en.json'
 
@@ -79,7 +79,7 @@ For SFC.
 
 ```vue
 <script>
-/* eslint vue-i18n-ex/no-unused-keys: 'error' */
+/* eslint @intlify/vue-i18n/no-unused-keys: 'error' */
 </script>
 <i18n>
 {
@@ -108,7 +108,7 @@ locale messages:
 <eslint-code-block fix language="json" filename="en.json">
 
 ```json
-/* eslint vue-i18n-ex/no-unused-keys: 'error' */
+/* eslint @intlify/vue-i18n/no-unused-keys: 'error' */
 
 // ✓ GOOD
 {
@@ -136,7 +136,7 @@ In localization codes of application:
 <eslint-code-block fix language="javascript">
 
 ```js
-import VueI18n from 'vue-i18n-ex'
+import VueI18n from 'vue-i18n'
 
 import en from './locales/en.json'
 
@@ -158,7 +158,7 @@ i18n.t('hi')
 
 ```json
 {
-  "vue-i18n-ex/no-unused-keys": [
+  "@intlify/vue-i18n/no-unused-keys": [
     "error",
     {
       "src": "./src",
@@ -177,13 +177,13 @@ i18n.t('hi')
 
 ## :couple: Related Rules
 
-- [vue-i18n-ex/no-missing-keys-in-other-locales](./no-missing-keys-in-other-locales.md)
+- [@intlify/vue-i18n/no-missing-keys-in-other-locales](./no-missing-keys-in-other-locales.md)
 
 ## :rocket: Version
 
-This rule was introduced in `eslint-plugin-vue-i18n-ex` v0.1.0
+This rule was introduced in `@intlify/eslint-plugin-vue-i18n` v0.1.0
 
 ## :mag: Implementation
 
-- [Rule source](https://github.com/intlify/eslint-plugin-vue-i18n-ex/blob/master/lib/rules/no-unused-keys.ts)
-- [Test source](https://github.com/intlify/eslint-plugin-vue-i18n-ex/tree/master/tests/lib/rules/no-unused-keys.ts)
+- [Rule source](https://github.com/intlify/eslint-plugin-vue-i18n/blob/master/lib/rules/no-unused-keys.ts)
+- [Test source](https://github.com/intlify/eslint-plugin-vue-i18n/tree/master/tests/lib/rules/no-unused-keys.ts)

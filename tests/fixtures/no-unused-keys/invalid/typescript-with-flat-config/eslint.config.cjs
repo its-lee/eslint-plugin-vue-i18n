@@ -18,7 +18,7 @@ module.exports = [
   },
   {
     rules: {
-      "vue-i18n-ex/no-unused-keys": [
+      "@intlify/vue-i18n/no-unused-keys": [
         "error",
         {
           src: "./src",
@@ -28,7 +28,7 @@ module.exports = [
       ],
     },
     settings: {
-      "vue-i18n-ex": {
+      "vue-i18n": {
         localeDir: {
           pattern: `./locales/*.{json,yaml,yml}`,
           localeKey: "file",

@@ -4,7 +4,7 @@ const config = require('./base')
 export = [
   ...config,
   {
-    name: 'vue-i18n-ex:recommended:setup',
+    name: '@intlify/vue-i18n:recommended:setup',
     languageOptions: {
       ecmaVersion: 2018,
       sourceType: 'module',
@@ -17,20 +17,19 @@ export = [
     }
   },
   {
-    name: 'vue-i18n-ex:recommended:rules',
+    name: '@intlify/vue-i18n:recommended:rules',
     rules: {
-      'vue-i18n-ex/no-deprecated-i18n-component': 'warn',
-      'vue-i18n-ex/no-deprecated-i18n-place-attr': 'warn',
-      'vue-i18n-ex/no-deprecated-i18n-places-prop': 'warn',
-      'vue-i18n-ex/no-deprecated-modulo-syntax': 'warn',
-      'vue-i18n-ex/no-deprecated-tc': 'warn',
-      'vue-i18n-ex/no-deprecated-v-t': 'warn',
-      'vue-i18n-ex/no-html-messages': 'warn',
-      'vue-i18n-ex/no-i18n-t-path-prop': 'warn',
-      'vue-i18n-ex/no-missing-keys': 'warn',
-      'vue-i18n-ex/no-raw-text': 'warn',
-      'vue-i18n-ex/no-v-html': 'warn',
-      'vue-i18n-ex/valid-message-syntax': 'warn'
+      '@intlify/vue-i18n/no-deprecated-i18n-component': 'warn',
+      '@intlify/vue-i18n/no-deprecated-i18n-place-attr': 'warn',
+      '@intlify/vue-i18n/no-deprecated-i18n-places-prop': 'warn',
+      '@intlify/vue-i18n/no-deprecated-modulo-syntax': 'warn',
+      '@intlify/vue-i18n/no-deprecated-tc': 'warn',
+      '@intlify/vue-i18n/no-html-messages': 'warn',
+      '@intlify/vue-i18n/no-i18n-t-path-prop': 'warn',
+      '@intlify/vue-i18n/no-missing-keys': 'warn',
+      '@intlify/vue-i18n/no-raw-text': 'warn',
+      '@intlify/vue-i18n/no-v-html': 'warn',
+      '@intlify/vue-i18n/valid-message-syntax': 'warn'
     }
   }
 ]

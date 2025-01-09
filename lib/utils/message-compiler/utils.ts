@@ -19,7 +19,6 @@ export const NodeTypes = {
 export type MessageSyntaxVersions = {
   v8: boolean
   v9: boolean
-  v10: boolean
   isNotSet: boolean
   reportIfMissingSetting: () => boolean
 }
@@ -32,20 +31,19 @@ export function getMessageSyntaxVersions(
 ): MessageSyntaxVersions {
   const { settings } = context
   const messageSyntaxVersion =
-    settings['vue-i18n-ex'] && settings['vue-i18n-ex'].messageSyntaxVersion
+    settings['vue-i18n'] && settings['vue-i18n'].messageSyntaxVersion
 
   if (!messageSyntaxVersion) {
     return {
       v8: true,
       v9: true,
-      v10: true,
       isNotSet: true,
       reportIfMissingSetting: () => {
         if (!puttedSettingsError.has(context)) {
           const ruleName = context.id
           context.report({
             loc: { line: 1, column: 0 },
-            message: `If you want to use '${ruleName}' rule, you need to set 'messageSyntaxVersion' at 'settings'. See the 'eslint-plugin-vue-i18n-ex' documentation`
+            message: `If you want to use '${ruleName}' rule, you need to set 'messageSyntaxVersion' at 'settings'. See the 'eslint-plugin-vue-i18n' documentation`
           })
           puttedSettingsError.add(context)
         }
@@ -56,8 +54,7 @@ export function getMessageSyntaxVersions(
   const range = new Range(messageSyntaxVersion)
   return {
     v8: intersects(range, '^8.0.0 || <=8.0.0'),
-    v9: intersects(range, '^9.0.0-0'),
-    v10: intersects(range, '>=10.0.0-0'),
+    v9: intersects(range, '>=9.0.0-0'),
     isNotSet: false,
     reportIfMissingSetting: () => false
   }

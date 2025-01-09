@@ -1,10 +1,10 @@
 ---
-title: 'vue-i18n-ex/no-dynamic-keys'
+title: '@intlify/vue-i18n/no-dynamic-keys'
 description: disallow localization dynamic keys at localization methods
 since: v0.1.0
 ---
 
-# vue-i18n-ex/no-dynamic-keys
+# @intlify/vue-i18n/no-dynamic-keys
 
 > disallow localization dynamic keys at localization methods
 
@@ -41,7 +41,7 @@ localization codes:
 
 ```vue
 <script>
-/* eslint vue-i18n-ex/no-dynamic-keys: 'error' */
+/* eslint @intlify/vue-i18n/no-dynamic-keys: 'error' */
 </script>
 <template>
   <div class="app">
@@ -62,9 +62,9 @@ localization codes:
 <!-- eslint-skip -->
 
 ```js
-/* eslint vue-i18n-ex/no-dynamic-keys: 'error' */
+/* eslint @intlify/vue-i18n/no-dynamic-keys: 'error' */
 import Vue from 'vue'
-import VueI18n from 'vue-i18n-ex'
+import VueI18n from 'vue-i18n'
 
 import en from './locales/en.json'
 
@@ -106,7 +106,7 @@ localization codes:
 
 ```vue
 <script>
-/* eslint vue-i18n-ex/no-dynamic-keys: 'error' */
+/* eslint @intlify/vue-i18n/no-dynamic-keys: 'error' */
 </script>
 <template>
   <div class="app">
@@ -127,9 +127,9 @@ localization codes:
 <!-- eslint-skip -->
 
 ```js
-/* eslint vue-i18n-ex/no-dynamic-keys: 'error' */
+/* eslint @intlify/vue-i18n/no-dynamic-keys: 'error' */
 import Vue from 'vue'
-import VueI18n from 'vue-i18n-ex'
+import VueI18n from 'vue-i18n'
 
 import en from './locales/en.json'
 
@@ -155,9 +155,9 @@ i18n.t('hello')
 
 ## :rocket: Version
 
-This rule was introduced in `eslint-plugin-vue-i18n-ex` v0.1.0
+This rule was introduced in `@intlify/eslint-plugin-vue-i18n` v0.1.0
 
 ## :mag: Implementation
 
-- [Rule source](https://github.com/intlify/eslint-plugin-vue-i18n-ex/blob/master/lib/rules/no-dynamic-keys.ts)
-- [Test source](https://github.com/intlify/eslint-plugin-vue-i18n-ex/tree/master/tests/lib/rules/no-dynamic-keys.ts)
+- [Rule source](https://github.com/intlify/eslint-plugin-vue-i18n/blob/master/lib/rules/no-dynamic-keys.ts)
+- [Test source](https://github.com/intlify/eslint-plugin-vue-i18n/tree/master/tests/lib/rules/no-dynamic-keys.ts)

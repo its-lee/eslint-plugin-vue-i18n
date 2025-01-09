@@ -7,7 +7,7 @@ export async function update() {
   const raw = `/** DON'T EDIT THIS FILE; was created by scripts. */
 export = {
   parser: require.resolve('vue-eslint-parser'),
-  plugins: ['vue-i18n-ex'],
+  plugins: ['@intlify/vue-i18n'],
   overrides: [
     {
       files: ['*.json', '*.json5'],

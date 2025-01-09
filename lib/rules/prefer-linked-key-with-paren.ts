@@ -24,7 +24,7 @@ import { traverseNode } from '../utils/message-compiler/traverser'
 import { getFilename, getSourceCode } from '../utils/compat'
 
 const debug = debugBuilder(
-  'eslint-plugin-vue-i18n-ex:prefer-linked-key-with-paren'
+  'eslint-plugin-vue-i18n:prefer-linked-key-with-paren'
 )
 
 function getSingleQuote(node: JSONAST.JSONStringLiteral | YAMLAST.YAMLScalar) {
@@ -42,7 +42,7 @@ function create(context: RuleContext): RuleListener {
   const sourceCode = getSourceCode(context)
   const messageSyntaxVersions = getMessageSyntaxVersions(context)
 
-  function verifyForNewSyntax(
+  function verifyForV9(
     message: string,
     reportNode: JSONAST.JSONStringLiteral | YAMLAST.YAMLScalar,
     getReportOffset: GetReportOffset
@@ -134,16 +134,14 @@ function create(context: RuleContext): RuleListener {
     if (messageSyntaxVersions.reportIfMissingSetting()) {
       return
     }
-    const newSyntax = messageSyntaxVersions.v9 || messageSyntaxVersions.v10
-    const v8Syntax = messageSyntaxVersions.v8
-    if (newSyntax && v8Syntax) {
+    if (messageSyntaxVersions.v9 && messageSyntaxVersions.v8) {
       // This rule cannot support two versions in the same project.
       return
     }
 
-    if (newSyntax) {
-      verifyForNewSyntax(message, reportNode, getReportOffset)
-    } else if (v8Syntax) {
+    if (messageSyntaxVersions.v9) {
+      verifyForV9(message, reportNode, getReportOffset)
+    } else if (messageSyntaxVersions.v8) {
       verifyForV8(message, reportNode, getReportOffset)
     }
   }
@@ -190,7 +188,7 @@ export = createRule({
     docs: {
       description: 'enforce linked key to be enclosed in parentheses',
       category: 'Stylistic Issues',
-      url: 'https://eslint-plugin-vue-i18n-ex.intlify.dev/rules/prefer-linked-key-with-paren.html',
+      url: 'https://eslint-plugin-vue-i18n.intlify.dev/rules/prefer-linked-key-with-paren.html',
       recommended: false
     },
     fixable: 'code',

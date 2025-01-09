@@ -31,7 +31,6 @@ interface LocaleFiles {
   files: string[]
   localeKey: LocaleKeyType
   localePattern?: string | RegExp
-  includeFilenameInKey?: boolean
 }
 const UNEXPECTED_ERROR_LOCATION = { line: 1, column: 0 }
 /**
@@ -132,12 +131,7 @@ function loadLocaleMessages(
 ): FileLocaleMessage[] {
   const results: FileLocaleMessage[] = []
   const checkDupeMap: { [file: string]: LocaleKeyType[] } = {}
-  for (const {
-    files,
-    localeKey,
-    localePattern,
-    includeFilenameInKey
-  } of localeFilesList) {
+  for (const { files, localeKey, localePattern } of localeFilesList) {
     for (const file of files) {
       const localeKeys = checkDupeMap[file] || (checkDupeMap[file] = [])
       if (localeKeys.includes(localeKey)) {
@@ -146,12 +140,7 @@ function loadLocaleMessages(
       localeKeys.push(localeKey)
       const fullpath = resolve(cwd, file)
       results.push(
-        new FileLocaleMessage({
-          fullpath,
-          localeKey,
-          localePattern,
-          includeFilenameInKey
-        })
+        new FileLocaleMessage({ fullpath, localeKey, localePattern })
       )
     }
   }
@@ -173,7 +162,7 @@ export function getLocaleMessages(
   const { settings } = context
   /** @type {SettingsVueI18nLocaleDir | null} */
   const localeDir =
-    (settings['vue-i18n-ex'] && settings['vue-i18n-ex'].localeDir) || null
+    (settings['vue-i18n'] && settings['vue-i18n'].localeDir) || null
   const documentFragment =
     sourceCode.parserServices.getDocumentFragment &&
     sourceCode.parserServices.getDocumentFragment()
@@ -192,7 +181,7 @@ export function getLocaleMessages(
     ) {
       context.report({
         loc: UNEXPECTED_ERROR_LOCATION,
-        message: `You need to set 'localeDir' at 'settings', or '<i18n>' blocks. See the 'eslint-plugin-vue-i18n-ex' documentation`
+        message: `You need to set 'localeDir' at 'settings', or '<i18n>' blocks. See the 'eslint-plugin-vue-i18n' documentation`
       })
       puttedSettingsError.add(context)
     }
@@ -259,8 +248,7 @@ class LocaleDirLocaleMessagesCache {
       return {
         files: targetFilesLoader.get(localeDir.pattern, cwd),
         localeKey: String(localeDir.localeKey ?? 'file') as LocaleKeyType,
-        localePattern: localeDir.localePattern,
-        includeFilenameInKey: localeDir.includeFilenameInKey
+        localePattern: localeDir.localePattern
       }
     }
   }

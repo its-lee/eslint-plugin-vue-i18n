@@ -3,7 +3,7 @@
   "changelog": [
     "@changesets/changelog-github",
     {
-      "repo": "its-lee/eslint-plugin-vue-i18n-ex"
+      "repo": "intlify/eslint-plugin-vue-i18n"
     }
   ],
   "commit": false,

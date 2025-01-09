@@ -1,9 +1,9 @@
 /** DON'T EDIT THIS FILE; was created by scripts. */
 // configs
-import baseLegacy from './configs/base'
-import recommendedLegacy from './configs/recommended'
-import base from './configs/flat/base'
-import recommended from './configs/flat/recommended'
+import base from './configs/base'
+import recommended from './configs/recommended'
+import flatBase from './configs/flat/base'
+import flatRecommended from './configs/flat/recommended'
 
 // rules
 import keyFormatStyle from './rules/key-format-style'
@@ -32,15 +32,12 @@ import validMessageSyntax from './rules/valid-message-syntax'
 export = {
   configs: {
     // eslintrc configs
-    'base-legacy': baseLegacy,
-    'recommended-legacy': recommendedLegacy,
-
-    // flat configs
     base,
     recommended,
-    // flat configs (Backward compatibility)
-    'flat/base': base,
-    'flat/recommended': recommended
+
+    // flat configs
+    'flat/base': flatBase,
+    'flat/recommended': flatRecommended
   },
   rules: {
     'key-format-style': keyFormatStyle,

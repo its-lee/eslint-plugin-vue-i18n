@@ -39,10 +39,13 @@ describe('Integration with legacy config', () => {
     assert.strictEqual(enJson.messages.length, 1)
     assert.strictEqual(
       enJson.messages[0].ruleId,
-      'vue-i18n-ex/no-html-messages'
+      '@intlify/vue-i18n/no-html-messages'
     )
     const aVue = result.find(r => path.basename(r.filePath) === 'a.vue')
     assert.strictEqual(aVue.messages.length, 1)
-    assert.strictEqual(aVue.messages[0].ruleId, 'vue-i18n-ex/no-missing-keys')
+    assert.strictEqual(
+      aVue.messages[0].ruleId,
+      '@intlify/vue-i18n/no-missing-keys'
+    )
   })
 })

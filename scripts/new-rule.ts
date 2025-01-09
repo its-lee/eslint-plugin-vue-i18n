@@ -31,7 +31,7 @@ export = createRule({
     docs: {
       description: '...',
       category: 'Best Practices',
-      url: 'https://eslint-plugin-vue-i18n-ex.intlify.dev/rules/${ruleId}.html',
+      url: 'https://eslint-plugin-vue-i18n.intlify.dev/rules/${ruleId}.html',
       recommended: false
     },
     fixable: null,
@@ -86,11 +86,11 @@ tester.run("${ruleId}", rule as never, {
   writeFileSync(
     docFile,
     `---
-title: 'vue-i18n-ex/${ruleId}'
+title: '@intlify/vue-i18n/${ruleId}'
 description: description
 ---
 
-# vue-i18n-ex/${ruleId}
+# @intlify/vue-i18n/${ruleId}
 
 > description
 
@@ -104,7 +104,7 @@ This rule reports ???.
 
 \`\`\`vue
 <script>
-/* eslint vue-i18n-ex/${ruleId}: "error" */
+/* eslint @intlify/vue-i18n/${ruleId}: "error" */
 </script>
 
 <!-- ✓ GOOD -->
@@ -120,7 +120,7 @@ This rule reports ???.
 
 \`\`\`json
 {
-  "vue-i18n-ex/${ruleId}": ["error", {
+  "@intlify/vue-i18n/${ruleId}": ["error", {
 
   }]
 }

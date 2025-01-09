@@ -16,7 +16,7 @@ const options = {
       languageOptions: { parser: jsonParser },
       filename: join(localesRoot, 'test.json'),
       settings: {
-        'vue-i18n-ex': {
+        'vue-i18n': {
           localeDir: `${localesRoot}/*.{json,yaml,yml}`
         }
       }
@@ -25,7 +25,7 @@ const options = {
       languageOptions: { parser: jsonParser },
       filename: join(localesRoot, 'test.json'),
       settings: {
-        'vue-i18n-ex': {
+        'vue-i18n': {
           localeDir: `${localesRoot}/*.{json,yaml,yml}`,
           messageSyntaxVersion: '^8.0.0'
         }
@@ -35,7 +35,7 @@ const options = {
       languageOptions: { parser: jsonParser },
       filename: join(localesRoot, 'test.json'),
       settings: {
-        'vue-i18n-ex': {
+        'vue-i18n': {
           localeDir: `${localesRoot}/*.{json,yaml,yml}`,
           messageSyntaxVersion: '^9.0.0'
         }
@@ -47,7 +47,7 @@ const options = {
       languageOptions: { parser: yamlParser },
       filename: join(localesRoot, 'test.yaml'),
       settings: {
-        'vue-i18n-ex': {
+        'vue-i18n': {
           localeDir: `${localesRoot}/*.{json,yaml,yml}`
         }
       }
@@ -56,7 +56,7 @@ const options = {
       languageOptions: { parser: yamlParser },
       filename: join(localesRoot, 'test.yaml'),
       settings: {
-        'vue-i18n-ex': {
+        'vue-i18n': {
           localeDir: `${localesRoot}/*.{json,yaml,yml}`,
           messageSyntaxVersion: '^8.0.0'
         }
@@ -66,7 +66,7 @@ const options = {
       languageOptions: { parser: yamlParser },
       filename: join(localesRoot, 'test.yaml'),
       settings: {
-        'vue-i18n-ex': {
+        'vue-i18n': {
           localeDir: `${localesRoot}/*.{json,yaml,yml}`,
           messageSyntaxVersion: '^9.0.0'
         }
@@ -78,7 +78,7 @@ const options = {
       languageOptions: { parser: vueParser },
       filename: join(localesRoot, 'test.vue'),
       settings: {
-        'vue-i18n-ex': {
+        'vue-i18n': {
           localeDir: `${localesRoot}/*.{json,yaml,yml}`
         }
       }
@@ -87,7 +87,7 @@ const options = {
       languageOptions: { parser: vueParser },
       filename: join(localesRoot, 'test.vue'),
       settings: {
-        'vue-i18n-ex': {
+        'vue-i18n': {
           localeDir: `${localesRoot}/*.{json,yaml,yml}`,
           messageSyntaxVersion: '^9.0.0'
         }
@@ -155,7 +155,7 @@ tester.run('valid-message-syntax', rule as never, {
       ...options.json.default,
       errors: [
         {
-          message: `If you want to use '${TEST_RULE_ID_PREFIX}valid-message-syntax' rule, you need to set 'messageSyntaxVersion' at 'settings'. See the 'eslint-plugin-vue-i18n-ex' documentation`,
+          message: `If you want to use '${TEST_RULE_ID_PREFIX}valid-message-syntax' rule, you need to set 'messageSyntaxVersion' at 'settings'. See the 'eslint-plugin-vue-i18n' documentation`,
           line: 1,
           column: 1
         },
@@ -223,25 +223,24 @@ tester.run('valid-message-syntax', rule as never, {
         }
       ]
     },
-    // {
-    //   // The syntax is now allowed.
-    //   code: `
-    //   key: message @:(v8)
-    //   `,
-    //   ...options.yaml.default,
-    //   errors: [
-    //     {
-    //       message: `If you want to use '${TEST_RULE_ID_PREFIX}valid-message-syntax' rule, you need to set 'messageSyntaxVersion' at 'settings'. See the 'eslint-plugin-vue-i18n-ex' documentation`,
-    //       line: 1,
-    //       column: 1
-    //     },
-    //     {
-    //       message: 'Unexpected empty linked key',
-    //       line: 2,
-    //       column: 21
-    //     }
-    //   ]
-    // },
+    {
+      code: `
+      key: message @:(v8)
+      `,
+      ...options.yaml.default,
+      errors: [
+        {
+          message: `If you want to use '${TEST_RULE_ID_PREFIX}valid-message-syntax' rule, you need to set 'messageSyntaxVersion' at 'settings'. See the 'eslint-plugin-vue-i18n' documentation`,
+          line: 1,
+          column: 1
+        },
+        {
+          message: 'Unexpected empty linked key',
+          line: 2,
+          column: 21
+        }
+      ]
+    },
     {
       code: `
       key: message { v9 }
@@ -249,7 +248,7 @@ tester.run('valid-message-syntax', rule as never, {
       ...options.yaml.default,
       errors: [
         {
-          message: `If you want to use '${TEST_RULE_ID_PREFIX}valid-message-syntax' rule, you need to set 'messageSyntaxVersion' at 'settings'. See the 'eslint-plugin-vue-i18n-ex' documentation`,
+          message: `If you want to use '${TEST_RULE_ID_PREFIX}valid-message-syntax' rule, you need to set 'messageSyntaxVersion' at 'settings'. See the 'eslint-plugin-vue-i18n' documentation`,
           line: 1,
           column: 1
         },
@@ -273,65 +272,61 @@ tester.run('valid-message-syntax', rule as never, {
         }
       ]
     },
-    // {
-    //   // The syntax is now allowed.
-    //   code: `
-    //   key: message @:(v8)
-    //   `,
-    //   ...options.yaml.v9,
-    //   errors: [
-    //     {
-    //       message: 'Unexpected empty linked key',
-    //       line: 2,
-    //       column: 21
-    //     }
-    //   ]
-    // },
-    // {
-    //   // The syntax is now allowed.
-    //   code: `
-    //   key: message new line
-    //     @:(v8)
-    //   `,
-    //   ...options.yaml.v9,
-    //   errors: [
-    //     {
-    //       message: 'Unexpected empty linked key',
-    //       line: 3,
-    //       column: 10
-    //     }
-    //   ]
-    // },
-    // {
-    //   // The syntax is now allowed.
-    //   code: `
-    //   key: "message new line
-    //     @:(v8)"
-    //   `,
-    //   ...options.yaml.v9,
-    //   errors: [
-    //     {
-    //       message: 'Unexpected empty linked key',
-    //       line: 3,
-    //       column: 10
-    //     }
-    //   ]
-    // },
-    // {
-    //   // The syntax is now allowed.
-    //   code: `
-    //   key: 'message new line
-    //     @:(v8)'
-    //   `,
-    //   ...options.yaml.v9,
-    //   errors: [
-    //     {
-    //       message: 'Unexpected empty linked key',
-    //       line: 3,
-    //       column: 10
-    //     }
-    //   ]
-    // },
+    {
+      code: `
+      key: message @:(v8)
+      `,
+      ...options.yaml.v9,
+      errors: [
+        {
+          message: 'Unexpected empty linked key',
+          line: 2,
+          column: 21
+        }
+      ]
+    },
+    {
+      code: `
+      key: message new line
+        @:(v8)
+      `,
+      ...options.yaml.v9,
+      errors: [
+        {
+          message: 'Unexpected empty linked key',
+          line: 3,
+          column: 10
+        }
+      ]
+    },
+    {
+      code: `
+      key: "message new line
+        @:(v8)"
+      `,
+      ...options.yaml.v9,
+      errors: [
+        {
+          message: 'Unexpected empty linked key',
+          line: 3,
+          column: 10
+        }
+      ]
+    },
+    {
+      code: `
+      key: 'message new line
+        @:(v8)'
+      `,
+      ...options.yaml.v9,
+      errors: [
+        {
+          message: 'Unexpected empty linked key',
+          line: 3,
+          column: 10
+        }
+      ]
+    },
     {
       code: `
       <i18n lang="yaml">
@@ -375,7 +370,7 @@ tester.run('valid-message-syntax', rule as never, {
       ...options.vue.default,
       errors: [
         {
-          message: `If you want to use '${TEST_RULE_ID_PREFIX}valid-message-syntax' rule, you need to set 'messageSyntaxVersion' at 'settings'. See the 'eslint-plugin-vue-i18n-ex' documentation`,
+          message: `If you want to use '${TEST_RULE_ID_PREFIX}valid-message-syntax' rule, you need to set 'messageSyntaxVersion' at 'settings'. See the 'eslint-plugin-vue-i18n' documentation`,
           line: 1,
           column: 1
         },
@@ -480,6 +475,16 @@ tester.run('valid-message-syntax', rule as never, {
           message: 'Unterminated closing brace',
           line: 3,
           column: 22
+        },
+        {
+          message: 'Unterminated closing brace',
+          line: 4,
+          column: 27
+        },
+        {
+          message: 'Unbalanced closing brace',
+          line: 4,
+          column: 34
         },
         {
           message: "Unexpected 'null' message",

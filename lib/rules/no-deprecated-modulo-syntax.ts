@@ -13,7 +13,7 @@ import {
   getMessageSyntaxVersions,
   NodeTypes
 } from '../utils/message-compiler/utils'
-import { parse } from '../utils/message-compiler/parser-v9'
+import { parse } from '../utils/message-compiler/parser'
 import { traverseNode } from '../utils/message-compiler/traverser'
 import {
   createRule,
@@ -22,9 +22,7 @@ import {
 } from '../utils/rule'
 import { getFilename, getSourceCode } from '../utils/compat'
 
-const debug = debugBuilder(
-  'eslint-plugin-vue-i18n-ex:no-deprecated-modulo-syntax'
-)
+const debug = debugBuilder('eslint-plugin-vue-i18n:no-deprecated-modulo-syntax')
 
 function create(context: RuleContext): RuleListener {
   const filename = getFilename(context)
@@ -77,6 +75,8 @@ function create(context: RuleContext): RuleListener {
     }
     if (messageSyntaxVersions.v9) {
       verifyForV9(message, reportNode, getReportOffset)
+    } else if (messageSyntaxVersions.v8) {
+      return
     }
   }
 
@@ -122,7 +122,7 @@ export = createRule({
     docs: {
       description: 'enforce modulo interpolation to be named interpolation',
       category: 'Recommended',
-      url: 'https://eslint-plugin-vue-i18n-ex.intlify.dev/rules/no-deprecated-modulo-syntax.html',
+      url: 'https://eslint-plugin-vue-i18n.intlify.dev/rules/no-deprecated-modulo-syntax.html',
       recommended: true
     },
     fixable: 'code',

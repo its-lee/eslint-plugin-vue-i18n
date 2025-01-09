@@ -102,7 +102,7 @@ class DocFile {
       }
     } else if (rule.recommended) {
       headerLines.push(
-        '- :star: The `"extends": "plugin:vue-i18n-ex/recommended"` or `*.configs["flat/recommended"]` property in a configuration file enables this rule.'
+        '- :star: The `"extends": "plugin:@intlify/vue-i18n/recommended"` or `*.configs["flat/recommended"]` property in a configuration file enables this rule.'
       )
     }
 
@@ -145,14 +145,14 @@ class DocFile {
       this.since
         ? `## :rocket: Version
 
-This rule was introduced in \`eslint-plugin-vue-i18n-ex\` ${this.since}
+This rule was introduced in \`@intlify/eslint-plugin-vue-i18n\` ${this.since}
 
 `
         : ''
     }## :mag: Implementation
 
-- [Rule source](https://github.com/intlify/eslint-plugin-vue-i18n-ex/blob/master/lib/rules/${name}.ts)
-- [Test source](https://github.com/intlify/eslint-plugin-vue-i18n-ex/tree/master/tests/lib/rules/${name}.ts)
+- [Rule source](https://github.com/intlify/eslint-plugin-vue-i18n/blob/master/lib/rules/${name}.ts)
+- [Test source](https://github.com/intlify/eslint-plugin-vue-i18n/tree/master/tests/lib/rules/${name}.ts)
 `
     if (footerPattern.test(this.content)) {
       this.content = this.content.replace(footerPattern, footer)

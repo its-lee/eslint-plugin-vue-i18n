@@ -11,15 +11,13 @@ import type {
   TextNode
 } from '@intlify/message-compiler'
 import { NodeTypes } from './utils'
-import type { ModuloNamedNode } from './parser-v9'
 
-export type MessageElementNode =
+type MessageElementNode =
   | TextNode
   | NamedNode
   | ListNode
   | LiteralNode
   | LinkedNode
-  | ModuloNamedNode
 type MessageASTNode =
   | ResourceNode
   | PluralNode

@@ -1,10 +1,10 @@
 ---
-title: 'vue-i18n-ex/prefer-linked-key-with-paren'
+title: '@intlify/vue-i18n/prefer-linked-key-with-paren'
 description: enforce linked key to be enclosed in parentheses
 since: v0.10.0
 ---
 
-# vue-i18n-ex/prefer-linked-key-with-paren
+# @intlify/vue-i18n/prefer-linked-key-with-paren
 
 > enforce linked key to be enclosed in parentheses
 
@@ -21,7 +21,7 @@ locale messages:
 <eslint-code-block fix language="json">
 
 ```json
-/* eslint vue-i18n-ex/prefer-linked-key-with-paren: 'error' */
+/* eslint @intlify/vue-i18n/prefer-linked-key-with-paren: 'error' */
 {
   /* ✗ BAD */
   "hello": "Hello @:world",
@@ -33,12 +33,12 @@ locale messages:
 
 :+1: Examples of **correct** code for this rule:
 
-locale messages (for vue-i18n-ex v9+):
+locale messages (for vue-i18n v9+):
 
 <eslint-code-block fix message-syntax-version="^9" language="json">
 
 ```json
-/* eslint vue-i18n-ex/prefer-linked-key-with-paren: 'error' */
+/* eslint @intlify/vue-i18n/prefer-linked-key-with-paren: 'error' */
 {
   /* ✓ GOOD */
   "hello": "Hello @:{'world'}",
@@ -48,12 +48,12 @@ locale messages (for vue-i18n-ex v9+):
 
 </eslint-code-block>
 
-locale messages (for vue-i18n-ex v8):
+locale messages (for vue-i18n v8):
 
 <eslint-code-block fix message-syntax-version="^8" language="json">
 
 ```json
-/* eslint vue-i18n-ex/prefer-linked-key-with-paren: 'error' */
+/* eslint @intlify/vue-i18n/prefer-linked-key-with-paren: 'error' */
 {
   /* ✓ GOOD */
   "hello": "Hello @:(world)",
@@ -65,9 +65,9 @@ locale messages (for vue-i18n-ex v8):
 
 ## :rocket: Version
 
-This rule was introduced in `eslint-plugin-vue-i18n-ex` v0.10.0
+This rule was introduced in `@intlify/eslint-plugin-vue-i18n` v0.10.0
 
 ## :mag: Implementation
 
-- [Rule source](https://github.com/intlify/eslint-plugin-vue-i18n-ex/blob/master/lib/rules/prefer-linked-key-with-paren.ts)
-- [Test source](https://github.com/intlify/eslint-plugin-vue-i18n-ex/tree/master/tests/lib/rules/prefer-linked-key-with-paren.ts)
+- [Rule source](https://github.com/intlify/eslint-plugin-vue-i18n/blob/master/lib/rules/prefer-linked-key-with-paren.ts)
+- [Test source](https://github.com/intlify/eslint-plugin-vue-i18n/tree/master/tests/lib/rules/prefer-linked-key-with-paren.ts)

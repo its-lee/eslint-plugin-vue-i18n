@@ -1,9 +1,9 @@
 {
-  "name": "eslint-plugin-vue-i18n-ex",
+  "name": "@intlify/eslint-plugin-vue-i18n",
   "description": "ESLint plugin for Vue I18n",
-  "version": "5.0.0",
+  "version": "3.2.0",
   "license": "MIT",
-  "homepage": "https://github.com/its-lee/eslint-plugin-vue-i18n-ex#readme",
+  "homepage": "https://github.com/intlify/eslint-plugin-vue-i18n#readme",
   "keywords": [
     "eslint",
     "eslint-plugin",
@@ -11,7 +11,7 @@
     "i18n",
     "internationalization",
     "vue",
-    "vue-i18n-ex",
+    "vue-i18n",
     "vue.js",
     "vuejs"
   ],
@@ -21,15 +21,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/its-lee/eslint-plugin-vue-i18n-ex.git"
+    "url": "git+https://github.com/intlify/eslint-plugin-vue-i18n.git"
   },
   "bugs": {
-    "url": "https://github.com/its-lee/eslint-plugin-vue-i18n-ex/issues"
+    "url": "https://github.com/intlify/eslint-plugin-vue-i18n/issues"
   },
   "engines": {
     "node": ">=18.0.0"
   },
-  "packageManager": "pnpm@9.15.3",
+  "packageManager": "pnpm@9.14.4",
   "type": "commonjs",
   "files": [
     "dist"
@@ -60,13 +60,13 @@
   },
   "dependencies": {
     "@eslint/eslintrc": "^3.0.0",
-    "@intlify/core-base": "^11.0.0",
-    "@intlify/message-compiler": "^11.0.0",
+    "@intlify/core-base": "^9.12.0",
+    "@intlify/message-compiler": "^9.12.0",
     "debug": "^4.3.4",
     "eslint-compat-utils": "^0.6.0",
     "glob": "^10.3.3",
     "globals": "^15.0.0",
-    "ignore": "^7.0.0",
+    "ignore": "^6.0.0",
     "import-fresh": "^3.3.0",
     "is-language-code": "^3.1.0",
     "js-yaml": "^4.1.0",
@@ -90,12 +90,12 @@
     "@types/json-schema": "^7.0.12",
     "@types/lodash": "^4.14.196",
     "@types/mocha": "^10.0.1",
-    "@types/node": "^22.0.0",
+    "@types/node": "^20.4.5",
     "@types/prettier": "^3.0.0",
     "@types/semver": "^7.5.0",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
-    "entities": "^6.0.0",
+    "entities": "^5.0.0",
     "env-cmd": "^10.1.0",
     "eslint": "^9.4.0",
     "eslint-config-prettier": "^9.0.0",
@@ -108,9 +108,9 @@
     "jiti": "^1.21.0",
     "json-schema": "^0.4.0",
     "lint-staged": "^15.0.0",
-    "mocha": "^11.0.0",
+    "mocha": "^10.2.0",
     "monaco-editor": "^0.52.0",
-    "npm-run-all2": "7.0.2",
+    "npm-run-all2": "7.0.1",
     "nyc": "^17.0.0",
     "opener": "^1.5.2",
     "path-scurry": "^1.10.1",

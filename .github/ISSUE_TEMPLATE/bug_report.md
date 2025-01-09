@@ -13,7 +13,7 @@ about: Create a report to help us improve
 
 - **ESLint version:**
 - **eslint-plugin-vue version:**
-- **eslint-plugin-vue-i18n-ex version:**
+- **eslint-plugin-vue-i18n version:**
 - **Node version:**
 
 **Please show your full configuration:**

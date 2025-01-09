@@ -7,15 +7,15 @@ export async function update() {
   const raw = `/** DON'T EDIT THIS FILE; was created by scripts. */
 export = [
   {
-    name: "vue-i18n-ex:base:setup",
+    name: "@intlify/vue-i18n:base:setup",
     plugins: {
-      get "vue-i18n-ex"() {
+      get "@intlify/vue-i18n"() {
         return require('../../index')
       }
     }
   },
   {
-    name: "vue-i18n-ex:base:setup:json",
+    name: "@intlify/vue-i18n:base:setup:json",
     files: ['*.json', '**/*.json', '*.json5', '**/*.json5'],
     languageOptions: {
       parser: require('vue-eslint-parser'),
@@ -25,7 +25,7 @@ export = [
     }
   },
   {
-    name: "vue-i18n-ex:base:setup:yaml",
+    name: "@intlify/vue-i18n:base:setup:yaml",
     files: ['*.yaml', '**/*.yaml', '*.yml', '**/*.yml'],
     languageOptions: {
       parser: require('vue-eslint-parser'),

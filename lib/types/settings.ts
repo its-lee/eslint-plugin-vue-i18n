@@ -9,7 +9,7 @@
  */
 export type LocaleKeyType = 'file' | 'path' | 'key'
 /**
- * Type of `settings['vue-i18n-ex'].localeDir`
+ * Type of `settings['vue-i18n'].localeDir`
  */
 export type SettingsVueI18nLocaleDir =
   | SettingsVueI18nLocaleDirGlob
@@ -39,11 +39,4 @@ export interface SettingsVueI18nLocaleDirObject {
    * If you omit it, it will be captured from the resource path with the same regular expression pattern as `vue-cli-plugin-i18n`.
    */
   localePattern?: string | RegExp
-  /**
-   * Specifies if the filename (without the extension) should be considered as part of the message keys.
-   *
-   * This is only valid when localeKey is set to 'path'.
-   * For example, the key 'title' in the file 'common.json' would be considered to have key 'common.title'.
-   */
-  includeFilenameInKey?: boolean
 }

@@ -1,5 +1,5 @@
 /**
- * A simplified version of the message parser that handles messages like vue-i18n-ex v8.
+ * A simplified version of the message parser that handles messages like vue-i18n v8.
  * This parser probably has poor performance.
  */
 import type {
@@ -17,7 +17,6 @@ import type {
 } from '@intlify/message-compiler'
 import { sortedLastIndex } from 'lodash'
 import { NodeTypes } from './utils'
-import type { ModuloNamedNode } from './parser-v9'
 
 export function parse(code: string): {
   ast: ResourceNode
@@ -208,7 +207,7 @@ function parseAST(code: string, errors: CompileError[]): ResourceNode {
           node = listNode
         }
         if (!node) {
-          const namedNode: ModuloNamedNode = {
+          const namedNode: NamedNode = {
             type: NodeTypes.Named,
             key: trimmedKeyValue,
             ...ctx.getNodeLoc(endOffset - 1, placeholderEndOffset)
@@ -302,7 +301,7 @@ function parseLiked(ctx: CodeContext, errors: CompileError[]) {
     ctx.setOffset(ctx.offset + 1)
     paren = true
   }
-  // see https://github.com/kazupon/vue-i18n-ex/blob/96a676cca51b592f3f8718b149ef26b3c8e70a64/src/index.js#L28
+  // see https://github.com/kazupon/vue-i18n/blob/96a676cca51b592f3f8718b149ef26b3c8e70a64/src/index.js#L28
   const keyValue = /^[\w\-_|.]*/u.exec(ctx.buff)![0]
   const keyEndOffset = ctx.offset + keyValue.length
   const key: LinkedKeyNode = {

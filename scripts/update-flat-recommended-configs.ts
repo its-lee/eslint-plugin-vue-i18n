@@ -12,7 +12,7 @@ const config = require('./base')
 export = [
   ...config,
   {
-    name: "vue-i18n-ex:recommended:setup",
+    name: "@intlify/vue-i18n:recommended:setup",
     languageOptions: {
       ecmaVersion: 2018,
       sourceType: 'module',
@@ -25,7 +25,7 @@ export = [
     },
   },
   {
-    name: "vue-i18n-ex:recommended:rules",
+    name: "@intlify/vue-i18n:recommended:rules",
     rules: {
       ${rules
         .filter(rule => rule.recommended)
